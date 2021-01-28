@@ -6,9 +6,7 @@ steps:
   - name: greeting
     image: alpine
     commands:
-      - echo hello
-      - echo docker
-      - echo world
+      - echo hello from the cloud
     when:
       branch:
         - develop
