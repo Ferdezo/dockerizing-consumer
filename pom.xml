@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.2.RELEASE</version>
+        <version>2.4.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>pl.ferdezo</groupId>
@@ -15,7 +15,7 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>13</java.version>
+        <java.version>15</java.version>
         <jib.version>1.7.0</jib.version>
     </properties>
 
@@ -66,7 +66,7 @@
                 <version>${jib.version}</version>
                 <configuration>
                     <from>
-                        <image>openjdk:13-jdk-alpine</image>
+                        <image>openjdk:15-jdk-alpine</image>
                     </from>
                     <to>
                         <image>discount-consumer</image>

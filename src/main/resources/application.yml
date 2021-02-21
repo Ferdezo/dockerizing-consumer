@@ -4,3 +4,7 @@ server:
 spring:
   rabbitmq:
     host: rabbitmq
+
+discount:
+  threshold:
+    percentage: 0.2
