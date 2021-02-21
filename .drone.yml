@@ -10,3 +10,11 @@ steps:
     when:
       branch:
         - develop
+
+  - name: test
+    image: maven:3-openjdk-15-slim
+    commands:
+      - mvn test
+    when:
+      branch:
+        - consumer
