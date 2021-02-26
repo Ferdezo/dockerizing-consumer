@@ -26,14 +26,18 @@ steps:
     image: maven:3-openjdk-15-slim
     commands:
       - mvn install
+      - ls -all
     when:
       event:
         - pull_request
 
-  - name: docker-build
-    image: maven:3-openjdk-15-slim
-    commands:
-      - mvn jib:dockerBuild
+  - name: docker
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: docker_login
+      password:
+        from_secret: docker_pswd
     when:
       event:
         - pull_request
