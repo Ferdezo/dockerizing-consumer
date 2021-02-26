@@ -1,0 +1,52 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: greeting
+    image: alpine
+    commands:
+      - echo hello from the cloud
+    when:
+      branch:
+        - develop
+
+  - name: test
+    image: maven:3-openjdk-15-slim
+    commands:
+      - mvn test
+    when:
+      branch:
+        - consumer
+      event:
+        - push
+        - pull_request
+
+  - name: maven-build
+    image: maven:3-openjdk-15-slim
+    commands:
+      - mvn install
+      - ls -all
+    when:
+      event:
+        - pull_request
+
+  - name: docker
+    image: plugins/docker
+    settings:
+      repo: ferdezo/discount-consumer
+      tags: from_drone
+      username:
+        from_secret: docker_login
+      password:
+        from_secret: docker_pswd
+    when:
+      event:
+        - pull_request
+
+#  - name: failed-tests-report
+#    when:
+#      status:
+#        - failure
+#
+#  - name: release
