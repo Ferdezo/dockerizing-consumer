@@ -34,6 +34,8 @@ steps:
   - name: docker
     image: plugins/docker
     settings:
+      repo: ferdezo/discount-consumer
+      tags: from_drone
       username:
         from_secret: docker_login
       password:
